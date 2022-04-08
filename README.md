@@ -112,9 +112,12 @@ Tweet or Comment in instagram or make a google search in any language that you w
 
 ### Networking
 #### Add list of network requests by screen 
-- Login screen
 - Compose screen
+    - (Create/POST) Create a new post in english
+    - (Create/POST) Create a new translated post
+    - (Read/GET) Get the translated post
 - History screen
-
+    - (Read/GET) Get all posts previously made through the app
+    - [OPTIONAL] (Update/PUT) Update prior posts
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
