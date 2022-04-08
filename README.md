@@ -109,7 +109,12 @@ Tweet or Comment in instagram or make a google search in any language that you w
 |description       |String                 |Translated text description
 |createdAt         |DateTime               |Time translated post was created
 |updatedAt         |DateTime               |Time translated post was updated
+
 ### Networking
-- [Add list of network requests by screen ]
+#### Add list of network requests by screen 
+- Login screen
+- Compose screen
+- History screen
+
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
