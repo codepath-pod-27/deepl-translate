@@ -1,4 +1,4 @@
-Original App Design Project - README Template
+DeepL-Translate Design Project 
 ===
 
 # DeepL Translate
@@ -81,16 +81,34 @@ Tweet or Comment in instagram or make a google search in any language that you w
 [This section will be completed in Unit 9]
 ### Models
 #### Model: User
-|Property          |
-|------------------
-|objectId          |
-|instagramUsername |
-|instagramPassword |
-|twitterUsername   |
-|twitterPassword   |
+|Property          |Type    |Description 
+|------------------|--------|-----------
+|objectId          |String  |Unique id for user
+|igUsername        |String  |User's instagram username
+|igPassword        |String  |User's instagram password
+|twitterUsername   |String  |User's twitter username
+|twitterPassword   |String  |User's twitter password
+|createdAt         |DateTime|Time user was created
+|updatedAt         |DateTime|Time user was updated
 
 #### Model: OriginalPost
+|Property          |Type            |Description 
+|------------------|----------------|-----------
+|objectId          |String          |Unique id for original post
+|user              |Pointer to user |Owner of the post 
+|description       |String          |Text description of the post
+|createdAt         |DateTime        |Time original post was created
+|updatedAt         |DateTime        |Time original post was updated
+
 #### Model: TranslatedPost
+|Property          |Type                   |Description 
+|------------------|-----------------------|-----------
+|objectId          |String                 |Unique id for user
+|user              |Pointer to user        |Owner of the post
+|originalPost      |Pointer to originalPost|Original pretranslated post
+|description       |String                 |Translated text description
+|createdAt         |DateTime               |Time translated post was created
+|updatedAt         |DateTime               |Time translated post was updated
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
