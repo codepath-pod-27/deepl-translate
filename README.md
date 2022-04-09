@@ -80,6 +80,14 @@ Tweet or Comment in instagram or make a google search in any language that you w
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
+#### Model: Language
+|Property          |Type    |Description 
+|------------------|--------|-----------
+|objectId          |String  |Unique id for language
+|Name              |String  |Name of the language
+|createdAt         |DateTime|Time language was created
+|updatedAt         |DateTime|Time language was updated
+
 #### Model: User
 |Property          |Type    |Description 
 |------------------|--------|-----------
@@ -104,20 +112,94 @@ Tweet or Comment in instagram or make a google search in any language that you w
 |Property          |Type                   |Description 
 |------------------|-----------------------|-----------
 |objectId          |String                 |Unique id for user
+|languageId        |Pointer to language    |Language of the translated post
 |user              |Pointer to user        |Owner of the post
 |originalPost      |Pointer to originalPost|Original pretranslated post
 |description       |String                 |Translated text description
 |createdAt         |DateTime               |Time translated post was created
 |updatedAt         |DateTime               |Time translated post was updated
-
 ### Networking
 #### Add list of network requests by screen 
 - Compose screen
+    - (Read/GET) Get list of languages user can translate to
+        ```kotlin
+        val query: ParseQuery<Language> = ParseQuery.getQuery(Language::class.java)
+
+        query.findInBackground(object: FindCallback<Language> {
+            override fun done(languages: MutableList<Language>?, e: ParseException?) {
+                if (e != null)
+                    Log.e(TAG, "Error fetching posts")
+                else 
+                    //TODO: Populate list of languages to display
+            }
+        })
+        ```
     - (Create/POST) Create a new post in english
+      ```kotlin
+       // create the Post obj
+        val post = OriginalPost()
+        // TODO: set data fields of OriginalPost obj according to the input entered by user
+        post.saveInBackground{ exception ->
+            if (exception != null)
+                Log.e(MainActivity.TAG, "Error saving post")
+            else 
+                Log.i(MainActivity.TAG, "Successfully saved post")
+      ```
     - (Create/POST) Create a new translated post
+      ```kotlin
+       // create the Post obj
+        val post = TranslatedPost()
+        // TODO: set data fields of TranslatedPost obj according to the input entered by user
+        post.saveInBackground{ exception ->
+            if (exception != null)
+                Log.e(MainActivity.TAG, "Error saving post")
+            else 
+                Log.i(MainActivity.TAG, "Successfully saved post")
+      ```
     - (Read/GET) Get the translated post
+        ```kotlin
+            val query: ParseQuery<TranslatedPost> = ParseQuery.getQuery(TranslatedPost::class.java)
+
+            query.findInBackground(object: FindCallback<TranslatedPost> {
+                override fun done(translatedPost: TranslatedPost?, e: ParseException?) {
+                    if (e != null)
+                        Log.e(TAG, "Error fetching posts")
+                    else 
+                        //TODO: Populate translate text box with translated post
+                }
+            })
+        ```
+        
 - History screen
     - (Read/GET) Get all posts previously made through the app
-    - [OPTIONAL] (Update/PUT) Update prior posts
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+        ```kotlin
+        val query: ParseQuery<OriginalPost> = ParseQuery.getQuery(Language::class.java)
+
+        query.findInBackground(object: FindCallback<OriginalPost> {
+            override fun done(originalPosts: MutableList<OriginalPost>?, e: ParseException?) {
+                if (e != null)
+                    Log.e(TAG, "Error fetching posts")
+                else 
+                    //TODO: Populate list of original posts to display
+            }
+        })
+        ```
+- [OPTIONAL: List of endpoints of existing API]
+#### Twitter API
+#### Base URL - https://api.twitter.com/1.1
+
+|HTTP Verb|Endpoint                     |Description
+|---------|-----------------------------|--------------------------------
+|`POST`   |statuses/update.json         |Publishes tweet
+
+#### Instagram API
+#### Base URL - https://graph.facebook.com/v13.0
+
+|HTTP Verb|Endpoint                               |Description
+|---------|---------------------------------------|--------------------------------
+|`POST`   |{ig-user-id}/mediastatuses/update.json |Publishes instagram post
+
+### References
+- https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/post-statuses-update
+- https://developers.facebook.com/docs/instagram-api/reference/ig-user/media#creating
+- https://developers.facebook.com/docs/graph-api/guides/versioning
