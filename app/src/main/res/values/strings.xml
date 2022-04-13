@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TranslatorApi</string>
+    <string name="no_connection">No internet connection! Cannot be translated!</string>
+    <string-array name="programming_languages">
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Hindu</item>
+    </string-array>
+</resources>
