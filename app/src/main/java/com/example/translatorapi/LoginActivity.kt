@@ -9,28 +9,9 @@ import android.widget.Toast
 
 
 import android.content.Intent
-
-
-import com.twitter.sdk.android.core.identity.TwitterLoginButton
-
-
-import android.view.View
 import com.twitter.sdk.android.core.*
 import com.twitter.sdk.android.core.Twitter.initialize
-import kotlin.Result
-import com.twitter.sdk.android.core.TwitterSession
-
-import com.twitter.sdk.android.core.TwitterAuthConfig
-
-import com.twitter.sdk.android.core.DefaultLogger
-
-import com.twitter.sdk.android.core.TwitterConfig
-
-
-
-
-
-
+import com.twitter.sdk.android.core.identity.TwitterLoginButton
 
 
 class LoginActivity : AppCompatActivity() {
@@ -52,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
        initialize(this);
 
-        loginButton = findViewById<TwitterLoginButton>(R.id.login_button)
+        loginButton = findViewById(R.id.login_button)
         loginButton.callback = object :
             Callback<TwitterSession?>() {
 
