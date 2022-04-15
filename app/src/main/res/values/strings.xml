@@ -7,4 +7,7 @@
         <item>German</item>
         <item>Hindu</item>
     </string-array>
+    <string name="twitter_consumer_key">olG3DhdvE1DvbCnxnpRJTyfY8</string>
+    <string name="twitter_consumer_secret">zE0NoGv8AhABSLNDJkfQ5787QZjbmhizbLFlIbbiUyQ373zSa0
+</string>
 </resources>
