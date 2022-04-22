@@ -54,8 +54,12 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginMethod(twitterSession: TwitterSession) {
         val userName = twitterSession.userName
+        val accessToken = twitterSession.authToken.token
+        val accessSecret = twitterSession.authToken.secret
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("username", userName)
+        intent.putExtra("access_token", accessToken)
+        intent.putExtra("accessSecret", accessSecret)
         startActivity(intent)
     }
 
