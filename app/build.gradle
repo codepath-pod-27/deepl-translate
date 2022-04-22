@@ -2,22 +2,33 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdk 31
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.example.translatorapi"
         minSdk 21
-        targetSdk 31
+        targetSdk 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "CONSUMER_KEY", apikeyProperties['CONSUMER_KEY'])
+        buildConfigField("String", "CONSUMER_SECRET", apikeyProperties['CONSUMER_SECRET'])
     }
     packagingOptions {
         exclude 'project.properties'
         exclude 'META-INF/INDEX.LIST'
+    }
+
+    lintOptions {
+        lintConfig rootProject.file('gradle/lint.xml')
     }
 
     buildTypes {
@@ -33,7 +44,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildToolsVersion '30.0.3'
+
 }
 
 dependencies {
@@ -53,4 +64,6 @@ dependencies {
     implementation 'com.google.guava:guava:27.0.1-android'
     implementation "com.twitter.sdk.android:twitter:3.3.0"
     implementation "com.twitter.sdk.android:twitter-core:3.3.0"
+    implementation 'com.codepath.libraries:android-oauth-handler:2.4.0'
+    implementation 'com.codepath.libraries:asynchttpclient:2.2.0'
 }

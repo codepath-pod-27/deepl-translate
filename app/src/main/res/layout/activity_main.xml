@@ -70,4 +70,14 @@
         android:background="@drawable/et_back"
         android:layout_gravity="center"
         android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/postTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post Tweet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/translatedTv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

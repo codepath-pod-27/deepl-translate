@@ -1,5 +1,7 @@
 package com.example.translatorapi
 
+//import com.google.api.services.translate.Translate
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -7,13 +9,17 @@ import android.os.StrictMode
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-//import com.google.api.services.translate.Translate
+import com.codepath.asynchttpclient.AsyncHttpClient
+import com.codepath.asynchttpclient.RequestParams
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.cloud.translate.Translate
-import com.google.cloud.NoCredentials
 import com.google.cloud.translate.TranslateOptions
+import okhttp3.Headers
+import org.json.JSONException
 import java.io.IOException
 
 
+const val REST_URL = "https://api.twitter.com/1.1/statuses/update.json"
 class MainActivity : AppCompatActivity() {
     private var translate:
             Translate? = null
@@ -29,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         inputToTranslate = findViewById(R.id.inputToTranslate)
         translatedTv = findViewById(R.id.translatedTv)
         val translateButton: Button = findViewById(R.id.translateButton)
+        val postTweetButton : Button = findViewById(R.id.postTweet)
 
         // get reference to the string array that we just created
         val languages = resources.getStringArray(R.array.programming_languages)
@@ -62,6 +69,11 @@ class MainActivity : AppCompatActivity() {
                 translatedTv!!.text = resources.getString(R.string.no_connection)
             }
         }
+
+        postTweetButton.setOnClickListener {
+            val tweetcontent  = translatedTv?.text.toString()
+            postTweet(tweetcontent)
+        }
     }
 
     private fun getTranslateService() {
@@ -70,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
 
         try {
-            System.setProperty("GOOGLE_API_KEY", "AIzaSyDj3iCEzbSoXY36OYtypQUusaKBBEm4M5I")
+            System.setProperty("GOOGLE_API_KEY", "AIzaSyD9JwLCwxkO2sTucSn-dV_qJaUpPIoZdH8")
 //            val translateOptions = TranslateOptions.newBuilder().setApiKey("").setCredentials(
 //                NoCredentials.getInstance()).build()
             translate = TranslateOptions.getDefaultInstance().service
@@ -102,6 +114,32 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val TAG = "MainActivity"
+    }
+
+    private fun postTweet(tweetContent:String){
+        val client = AsyncHttpClient()
+        val params = RequestParams()
+        params["oauth_token"] = intent.getStringExtra("access_token").toString()
+        params["oauth_token_secret"] = intent.getStringExtra("accessSecret").toString()
+        params["status"] = tweetContent
+
+        client.post(REST_URL, params.toString(),  object: JsonHttpResponseHandler(){
+            override fun onFailure(
+                statusCode: Int,
+                headers: Headers?,
+                response: String?,
+                throwable: Throwable?
+            ) {
+                Log.e(TAG, "onFailure $response")
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
+                Log.i(TAG, "Tweet posted successfully")
+
+            }
+
+        })
+
     }
 
 }
