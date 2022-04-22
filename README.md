@@ -32,8 +32,8 @@ Tweet or Comment in instagram or make a google search in any language that you w
 - [X] Use the DeepL API to perform the translation process
 - [X] Get the translated output 
 - [X] Connect twitter account, or embed google search links in the app
-- [ ] Query the translated output as an input to the social media API. 
-- [ ] User is able to translate English input to any language they want
+- [X] Query the translated output as an input to the social media API. 
+- [X] User is able to translate English input to any language they want
 
 ## Video Walkthrough
 
@@ -41,6 +41,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='/walkthrough5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <img src='/walkthrough4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='/walkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 **Optional Nice To-have Stories**
 
