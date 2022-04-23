@@ -65,5 +65,4 @@ dependencies {
     implementation "com.twitter.sdk.android:twitter:3.3.0"
     implementation "com.twitter.sdk.android:twitter-core:3.3.0"
     implementation 'com.codepath.libraries:android-oauth-handler:2.4.0'
-    implementation 'com.codepath.libraries:asynchttpclient:2.2.0'
 }

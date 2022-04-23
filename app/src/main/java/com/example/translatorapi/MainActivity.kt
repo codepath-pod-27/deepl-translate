@@ -15,7 +15,6 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
 import okhttp3.Headers
-import org.json.JSONException
 import java.io.IOException
 
 
