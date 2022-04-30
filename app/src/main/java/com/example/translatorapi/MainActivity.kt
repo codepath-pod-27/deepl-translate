@@ -1,7 +1,6 @@
 package com.example.translatorapi
 
 //import com.google.api.services.translate.Translate
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -14,8 +13,10 @@ import com.codepath.asynchttpclient.RequestParams
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
+import com.parse.FindCallback
+import com.parse.ParseException
+import com.parse.ParseQuery
 import okhttp3.Headers
-import org.json.JSONException
 import java.io.IOException
 
 
@@ -56,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+
         translateButton.setOnClickListener {
             if (checkInternetConnection()) {
 
@@ -75,6 +78,8 @@ class MainActivity : AppCompatActivity() {
             postTweet(tweetcontent)
         }
     }
+
+
 
     private fun getTranslateService() {
 

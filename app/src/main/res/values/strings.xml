@@ -12,4 +12,7 @@
     <string name="twitter_consumer_key">olG3DhdvE1DvbCnxnpRJTyfY8</string>
     <string name="twitter_consumer_secret">zE0NoGv8AhABSLNDJkfQ5787QZjbmhizbLFlIbbiUyQ373zSa0
 </string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">63L8gINSLtnS5MW8B1Dfz7gvrXiYQpNHuWtCtxRa</string>
+    <string name="back4app_client_key">3lZ8TLmDBIESfPNu5SIX0FfOQ56tFmqu0GVcbTim</string>
 </resources>
